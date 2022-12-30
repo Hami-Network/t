@@ -153,6 +153,7 @@ function HeroSection() {
                                         </button>
                                     </div>
                                 </div>
+
                                 <div className='flex items-center justify-center'>
                                     <div className='bg-light w-full  md:rounded-[2em] relative'>
                                         <>
@@ -175,8 +176,10 @@ function HeroSection() {
                                         </>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
+                        
                     </div>
                 </main>
             </div>

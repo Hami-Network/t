@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { NearbyDestinations } from '../../data'
 
-function AttractionsAndLandmarkSection() {
+function BestSellingSection() {
 
   const { bestSellingAttractions } = useSelector(state => state.general) 
 
@@ -54,4 +54,4 @@ function AttractionsAndLandmarkSection() {
   )
 }
 
-export default AttractionsAndLandmarkSection
+export default BestSellingSection

@@ -4,7 +4,7 @@ import ThemeRoutes from "./routes/Router";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "./redux/slices/usersSlice";
-import { fetchInitialData } from "./redux/slices/generalSlice";
+import { getAllCountries } from "./redux/slices/generalSlice";
 
 export default function App() {
     const { isSiteLoading } = useSelector((state) => state.users);
@@ -13,7 +13,7 @@ export default function App() {
 
     useEffect(() => {
         dispatch(fetchUser());
-        dispatch(fetchInitialData());
+        dispatch(getAllCountries());
     }, []);
 
     const routing = useRoutes(ThemeRoutes);

@@ -1,12 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AiOutlineClose, AiOutlineRight } from 'react-icons/ai'
 import { BsFacebook } from 'react-icons/bs'
 import { FcGoogle } from 'react-icons/fc'
 import { RiLockPasswordLine } from 'react-icons/ri'
+import { useDispatch } from 'react-redux'
+import axios from '../../axios'
+import { setUser } from '../../redux/slices/usersSlice'
 
 function LoginMobileCard({ viewloginMobile, setViewloginMobile }) {
+    const [data, setData] = useState({
+        email: "",
+        password: "",
+    });
+    const [isLoading, setIsLoading] = useState(false);
+    const [erorr, setError] = useState("");
+
+    const dispatch = useDispatch();
+
+    const handleChange = (e) => {
+        setData((prev) => {
+            return { ...prev, [e.target.name]: e.target.value };
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        try {
+            e.preventDefault();
+            setError("");
+            setIsLoading(true);
+
+            const response = await axios.post("/users/login", data);
+
+            dispatch(setUser(response.data));
+            setIsLoading(false);
+        } catch (err) {
+            setError(
+                err?.response?.data?.error || "Something went wrong, Try again"
+            );
+            setIsLoading(false);
+        }
+    };
+
     return (
-        <div className={`fixed ${viewloginMobile ? "bottom-0" : "-bottom-full "} bg-light rounded-t-3xl h-[85vh] w-full z-30 transition-all duration-500`}>
+        <div className={`fixed ${viewloginMobile ? "bottom-0" : "-bottom-full "} bg-light rounded-t-3xl max-h-[85vh] overflow-y-auto w-full z-30 transition-all duration-500`}>
+            <form onSubmit={handleSubmit}>
             <div className='py-10 p-7 space-y-5'>
                 <div className=' flex justify-between items-center'>
                     <div className=''>
@@ -27,11 +64,24 @@ function LoginMobileCard({ viewloginMobile, setViewloginMobile }) {
                 </div>
                 <div className='space-y-2 border-t py-4'>
                     <label className='text-text '> Email</label>
-                    <input type='email' placeholder='Enter Your Email' className='w-full placeholder:text-maintrans border border-main bg-trans py-3 text-sm rounded-xl px-2 focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 text-maintrans ' />
+                    <input 
+                    type='email' 
+                    placeholder='Enter Your Email' 
+                    className='w-full placeholder:text-maintrans border border-main bg-trans py-3 text-sm rounded-xl px-2 focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 text-maintrans ' 
+                    name='email'
+                    value={data.email}
+                    onChange={handleChange}
+                    />
                 </div>
                 <div className='space-y-2'>
                     <label className='text-text '> Password</label>
-                    <input type='password' placeholder='Give a password' className='w-full placeholder:text-maintrans border border-main bg-trans py-3 text-sm rounded-xl px-2 focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 text-maintrans' />
+                    <input 
+                    type='password' 
+                    placeholder='Give a password' 
+                    className='w-full placeholder:text-maintrans border border-main bg-trans py-3 text-sm rounded-xl px-2 focus:outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-400 text-maintrans'
+                    name='password'
+                    value={data.password}
+                    onChange={handleChange} />
                 </div>
                 <div className='text-text'>
                     <span className='text-xs'>By Signing In you agree to our</span>
@@ -52,6 +102,7 @@ function LoginMobileCard({ viewloginMobile, setViewloginMobile }) {
                     </div>
                 </div>
             </div>
+            </form>
         </div>
     )
 }

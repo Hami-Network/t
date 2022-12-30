@@ -4,11 +4,12 @@ import { BsCalendar2Date, BsEmojiHeartEyes } from 'react-icons/bs'
 import { IoLocationOutline } from 'react-icons/io5'
 import { useNavigate } from 'react-router-dom'
 
+
 function AttractionCard() {
     const navigate = useNavigate()
     const [value, setValue] = useState("")
-    const [datalist, setDatalist] = useState(true)
-    const [ filteredData, setFilteredData ] = useState([])
+    const [datalist, setDatalist] = useState(false)
+    const [filteredData, setFilteredData] = useState([])
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -22,36 +23,36 @@ function AttractionCard() {
     const handleFocus = (e) => {
         setDatalist(true)
     }
-    const handleBlur = () => {
-        setDatalist(false)
-    }
+    // const handleBlur = () => {
+    //     setDatalist(false)
+    // }
 
-    const country =[
-            {
-                name: "united arab emirates"
-            },
-            {
-                name: "India"
-            },
-            {
-                name: "Zimbave"
-            },
-            {
-                name: "Urugay"
-            },
-            {
-                name: "Jamaica"
-            },
-            {
-                name: "Netherland"
-            },
-            {
-                name: "Brazil"
-            },
-            {
-                name: "Argentina"
-            },
-        ]
+    const country = [
+        {
+            name: "united arab emirates"
+        },
+        {
+            name: "India"
+        },
+        {
+            name: "Zimbave"
+        },
+        {
+            name: "Urugay"
+        },
+        {
+            name: "Jamaica"
+        },
+        {
+            name: "Netherland"
+        },
+        {
+            name: "Brazil"
+        },
+        {
+            name: "Argentina"
+        },
+    ]
 
 
 
@@ -80,19 +81,25 @@ function AttractionCard() {
                                     placeholder='Where do you want to go?'
                                     onChange={(e) => setValue(e.target.value)}
                                     onFocus={handleFocus}
-                                    onBlur={handleBlur}
+                                    // onBlur={handleBlur}
                                     className='px-3 w-full border-none placeholder:text-text py-3 focus:outline-none focus:border-blue focus:ring-1 focus:ring-blue rounded-xl text-darktext' />
+                            </div>
                                 {datalist && value.length > 0 && (
-                                    <div className='absolute max-h-[17em] w-[21em] mt-1 bg-light rounded-lg overflow-y-auto'>
+                                    
+                                    <div className='absolute max-h-[17em] w-[21em] mt-1  bg-light rounded-lg overflow-y-auto'>
                                         <div className='w-full p-2 overflow-y-auto'>
                                             {filteredData?.map((item) => (
-                                            <div className='bg-soft py-2 px-2 cursor-pointer' onClick={() => {setValue(item.name) 
-                                                console.log("clicked")}}>{item.name}</div>
+                                                <div key={item.name} className='bg-soft py-2 px-2 cursor-pointer  z-30' onClick={() => {
+                                                    setValue(item.name)
+                                                    setDatalist(!datalist)
+                                                }
+                                                }>
+                                                    {item.name}
+                                                </div>
                                             ))}
                                         </div>
                                     </div>
                                 )}
-                            </div>
                         </div>
                     </div>
                     <div className='md:col-span-5 flex justify-center items-center md:border-r-2 border-bluetrans'>

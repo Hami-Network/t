@@ -5,6 +5,7 @@ const initialState = {
   loading: false,
   excursion: {},
   reviews: [],
+  categories: []
 };
 
 export const getExcursions = createAsyncThunk(
@@ -35,6 +36,14 @@ export const getReviews = createAsyncThunk(
   }
 );
 
+export const getCategories = createAsyncThunk(
+  "excursion/getCategories",
+  async (args, { getState }) => {
+    const response = await axios.get("/attractions/categories/all");
+    return response.data;
+  }
+);
+
 const excursionSlice = createSlice({
   name: "excursion",
   initialState,
@@ -52,6 +61,13 @@ const excursionSlice = createSlice({
     [getReviews.fulfilled]: (state, action) => {
       state.loading = false;
       state.reviews = action.payload;
+    },
+    [getCategories.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [getCategories.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.categories = action.payload;
     },
   },
 });

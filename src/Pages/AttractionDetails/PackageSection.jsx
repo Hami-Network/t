@@ -11,8 +11,8 @@ function PackageSection() {
     return (
         <>
             <div className='text-xl font-semibold my-2'>Select Package Options</div>
-            {excursion?.activities?.map((item) => (
-                <div className='border-2 rounded-xl'>
+            {excursion?.activities?.map((item,index) => (
+                <div className='border-2 rounded-xl' key={index}>
                     <div className='p-4'>
                         <div className='flex space-x-3 py-4'>
                             <div className='flex items-center'>

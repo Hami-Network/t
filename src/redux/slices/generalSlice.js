@@ -9,33 +9,20 @@ const initialState = {
     countries: [],
 };
 
-// export const getState = createAsyncThunk(
-//     "general/getState",
-//     async(args, {getState}) => {
-//         const response =  await axios.get('/general/state')
-//         return response.data;
-//     }
-// )
 
-// get single logo for navbar
+// get all data for home
 export const getHome = createAsyncThunk(
     "general/getHome",
     async (args, { getState }) => {
-        // const { token } = getState().user
-        // const config = {
-        //     headers: {
-        //         Authorization: `Bearer ${token}`,
-        //       },
-        // }
         const response = await axios.get(`/home/`);
         return response.data;
     }
 );
-
-export const fetchInitialData = createAsyncThunk(
-    "usersSlice/fetchInitialData",
+// get all countries 
+export const getAllCountries = createAsyncThunk(
+    "general/getAllCountries",
     async (_, { getState }) => {
-        const response = await axios.get("/home/initial-data");
+        const response = await axios.get("/countries/all");
         return response.data;
     }
 );
@@ -54,9 +41,11 @@ const generalSlice = createSlice({
             state.bestSellingAttractions =
                 action.payload?.bestSellingAttractions;
         },
-        [fetchInitialData.fulfilled]: (state, action) => {
-            console.log(action.payload);
-            state.countries = action.payload?.countries;
+        [getAllCountries.pending]: (state, action) => {
+            state.loading = true;
+        },
+        [getAllCountries.fulfilled]: (state, action) => {
+            state.countries = action.payload;
         },
     },
 });

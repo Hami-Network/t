@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { AiOutlineClose} from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Register from "../Authentication/Register";
 import Login from "../Authentication/Login";
@@ -13,7 +13,7 @@ function Navbar() {
     const [viewlogin, setViewlogin] = useState(false);
     const [viewRegisterMobile, setViewRegisterMobile] = useState(false);
     const [viewloginMobile, setViewloginMobile] = useState(false);
-    
+
 
     const dispatch = useDispatch();
     const { home } = useSelector((state) => state.general);
@@ -25,8 +25,6 @@ function Navbar() {
 
     return (
         <>
-
-
             <div className="bg-soft">
                 <div className=" py-1 px-3 lg:max-w-screen-xl lg:mx-auto">
                     <div className="flex justify-between">
@@ -61,8 +59,32 @@ function Navbar() {
                                     </span>
                                 </>
                             ) : (
-                                <div>
-                                    <div>Logged In</div>
+                                <div className="hidden lg:flex  items-center">
+                                    <div className="text-sm bg-lightblue px-3 py-2 rounded-md text-light">Logged In</div>
+                                </div>
+                            )}
+                            {!isLoggedIn ? (
+                            <>
+                            <span
+                                className="lg:hidden flex items-center text-light text-xs lg:text-sm bg-main px-2 lg:px-3   rounded-lg shadow-sm cursor-pointer"
+                                onClick={() =>
+                                    setViewRegisterMobile(!viewRegisterMobile)
+                                }
+                            >
+                                Register{" "}
+                            </span>
+                            <span
+                                className="lg:hidden flex items-center text-light text-xs lg:text-sm bg-blue px-2 lg:px-3   rounded-lg shadow-sm cursor-pointer"
+                                onClick={() =>
+                                    setViewloginMobile(!viewloginMobile)
+                                }
+                            >
+                                Sign in
+                            </span>
+                            </>
+                            ) : (
+                                <div className='lg:hidden flex items-center'>
+                                <div className="text-xs bg-lightblue px-2 py-1 rounded-md text-light">Logged In</div>
                                 </div>
                             )}
                         </div>

@@ -8,6 +8,7 @@ const initialState = {
     countries: [],
     jwtToken: localStorage.getItem("random-string") || "",
     isLoggedIn: false,
+    // getinitialState
 };
 
 const fetchUser = createAsyncThunk(
@@ -28,7 +29,7 @@ const fetchUser = createAsyncThunk(
 );
 
 const usersSlice = createSlice({
-    name: "payment",
+    name: "user",
     initialState,
     reducers: {
         setUser: (state, action) => {

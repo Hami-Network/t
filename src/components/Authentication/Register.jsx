@@ -71,15 +71,16 @@ function Register({ setViewRegister, setViewlogin, viewlogin, viewRegister }) {
                                 </div>
                             </div>
                         </div>
+                        
                         <div className="w-[24em] h-[40em] loginCard shadow-md  rounded-2xl">
                             <form
                                 onSubmit={handleSubmit}
-                                className="p-5 space-y-3"
+                                className="p-5 space-y-1"
                             >
                                 <div className="text-4xl text-blue font-semibold">
                                     Greetings...
                                 </div>
-                                <div className="space-y-2">
+                                <div className="space-y-1">
                                     <label className="text-text ">Name</label>
                                     <input
                                         type="text"
@@ -90,7 +91,7 @@ function Register({ setViewRegister, setViewlogin, viewlogin, viewRegister }) {
                                         onChange={handleChange}
                                     />
                                 </div>
-                                <div className="space-y-2">
+                                <div className="space-y-1">
                                     <label className="text-text ">Email</label>
                                     <input
                                         type="email"
@@ -101,14 +102,14 @@ function Register({ setViewRegister, setViewlogin, viewlogin, viewRegister }) {
                                         onChange={handleChange}
                                     />
                                 </div>
-                                <div className="space-y-2">
+                                <div className="space-y-1">
                                     <label className="text-text ">
                                         Country
                                     </label>
                                     <select
                                         name="country"
                                         id=""
-                                        className="w-full placeholder:text-bluetrans bg-trans outline-none"
+                                        className="w-full placeholder:text-bluetrans bg-trans py-3 text-sm rounded-xl px-2 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 text-bluetrans"
                                         onChange={handleChange}
                                         value={data.country || ""}
                                     >
@@ -127,7 +128,7 @@ function Register({ setViewRegister, setViewlogin, viewlogin, viewRegister }) {
                                         })}
                                     </select>
                                 </div>
-                                <div className="space-y-2">
+                                <div className="space-y-1">
                                     <label className="text-text ">
                                         PhoneNumber
                                     </label>
@@ -140,7 +141,7 @@ function Register({ setViewRegister, setViewlogin, viewlogin, viewRegister }) {
                                         onChange={handleChange}
                                     />
                                 </div>
-                                <div className="space-y-2">
+                                <div className="space-y-1">
                                     <label className="text-text ">
                                         Password
                                     </label>

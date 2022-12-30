@@ -119,7 +119,7 @@ function HeroSection() {
 
 
                                     {excursion?.sections?.map((item) => (
-                                        <div className='bg-light py-10 px-4 rounded-2xl md:my-4 w-full text-darktext'>
+                                        <div className='bg-light py-10 px-4 rounded-2xl md:my-4 w-full text-darktext'key={item.title} >
                                             <div className='py-3'>
                                                 <span className='text-xl font-semibold text-darktext '>{item?.title}</span>
                                             </div>

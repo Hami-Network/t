@@ -2,6 +2,7 @@ import React from 'react'
 import { AiFillStar, AiOutlineClose, AiOutlineMail } from 'react-icons/ai'
 import { TfiHeadphoneAlt } from 'react-icons/tfi'
 import { BsWhatsapp } from 'react-icons/bs'
+import { NeedHelp } from '../../components/Layouts'
 
 function SearchFunctionalitySection({ viewCategory, setViewCategory }) {
     return (
@@ -23,7 +24,7 @@ function SearchFunctionalitySection({ viewCategory, setViewCategory }) {
                                     <input type='date' className='text-text py-2 w-full border border-sky-500 rounded-lg px-2 focus:border-none focus:ring-1 focus:ring-sky-500 outline-none' />
                                 </div>
                             </div>
-                            <div className='2 space-y-3'>
+                            {/* <div className='2 space-y-3'>
                                 <div className='text-text font-medium'>
                                     <p className=''>Popular Tags</p>
                                 </div>
@@ -49,7 +50,7 @@ function SearchFunctionalitySection({ viewCategory, setViewCategory }) {
                                         <p className='text-sm text-darktext'>Virtual experiences</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className='3 space-y-3'>
                                 <div className='text-text font-medium'>
                                     <p className=''>Price Range</p>
@@ -174,60 +175,10 @@ function SearchFunctionalitySection({ viewCategory, setViewCategory }) {
                                     </div>
                                 </div>
                             </div>
-                            <div className='7 space-y-3'>
-                                <div className='text-text font-medium'>
-                                    <p className=''>Specials</p>
-                                </div>
-                                <div className='space-y-3'>
-                                    <div className='flex space-x-3'>
-                                        <input type='checkbox' className='w-5' />
-                                        <p className='text-sm text-darktext'>Discounted deals</p>
-                                    </div>
-                                    <div className='flex space-x-3'>
-                                        <input type='checkbox' className='w-5' />
-                                        <p className='text-sm text-darktext'>Free Cancellations</p>
-                                    </div>
-                                    <div className='flex space-x-3'>
-                                        <input type='checkbox' className='w-5' />
-                                        <p className='text-sm text-darktext'>Private Groups</p>
-                                    </div>
-                                    <div className='flex space-x-3'>
-                                        <input type='checkbox' className='w-5' />
-                                        <p className='text-sm text-darktext'>New on TC.tours</p>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
-                    <div className='hidden lg:block bg-light border rounded-xl py-5 mt-5 mb-10'>
-                        <div className='p-3 text-text space-y-3'>
-                            <div className='text-2xl text-darktext'>
-                                Need Help?
-                            </div>
-                            <div className='flex items-center space-x-3 ml-3'>
-                                <div className='text-2xl text-blue'><TfiHeadphoneAlt /> </div>
-                                <div className='space-y-2'>
-                                    <div className='text-main'>Call us on</div>
-                                    <div className=''>+910000000000</div>
-                                    <div className=''>+910000000000</div>
-                                </div>
-                            </div>
-                            <div className='flex items-center space-x-3 ml-3'>
-                                <div className='text-2xl text-green-600'><BsWhatsapp /> </div>
-                                <div className='space-y-2'>
-                                    <div className='text-main'>Whatsapp us on</div>
-                                    <div className=''>+910000000000</div>
-                                </div>
-                            </div>
-                            <div className='flex items-center space-x-3 ml-3'>
-                                <div className='text-2xl text-blue'><AiOutlineMail /> </div>
-                                <div className='space-y-2'>
-                                    <div className='text-main'>Email us on</div>
-                                    <div className=''>test123@email.com</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <NeedHelp />
                 </div>
             </div>
         </>

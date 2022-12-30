@@ -1,46 +1,18 @@
 import React from "react";
-import { useState } from "react";
-import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
 import { useSelector } from "react-redux";
+import FooterList from "./Footer/FooterList";
 
 function Footer() {
-    const [viewSupport, setViewSupport] = useState(false);
-
     const { home } = useSelector((state) => state.general);
+
 
     return (
         <div className="bg-dark text-text">
             <div className="mx-5 lg:max-w-screen-xl lg:mx-auto">
                 <div className="md:grid md:grid-cols-5 md:gap-5">
+
                     {home?.footer?.map((item) => (
-                        <div className="py-4 border-text border-b-2 space-y-2 md:border-none">
-                            <div
-                                className="flex justify-between items-center"
-                                onClick={() => setViewSupport(!viewSupport)}
-                            >
-                                <div className="font-medium">{item.title}</div>
-                                <div className="md:hidden text-lg mb-2">
-                                    {viewSupport ? (
-                                        <AiOutlineUp />
-                                    ) : (
-                                        <AiOutlineDown />
-                                    )}
-                                </div>
-                            </div>
-                            {viewSupport &&
-                                item?.navLinks?.map((links) => (
-                                    <div className="space-y-2 md:hidden">
-                                        <div className="text-sm">
-                                            {links?.name}
-                                        </div>
-                                    </div>
-                                ))}
-                            {item?.navLinks?.map((links) => (
-                                <div className="space-y-2 hidden md:block">
-                                    <div className="text-sm">{links?.name}</div>
-                                </div>
-                            ))}
-                        </div>
+                            <FooterList item={item} />
                     ))}
                 </div>
 
@@ -56,8 +28,7 @@ function Footer() {
 
                 <div className="text-text text-xs py-5 text-center leading-relaxed space-y-2">
                     <div className="">
-                        Booking.com is part of Booking Holdings Inc., the world
-                        leader in online travel and related services.
+                        {home?.footerDescription}
                     </div>
                     <div className="">
                         Copyright © 1996–{new Date().getFullYear()}{" "}
