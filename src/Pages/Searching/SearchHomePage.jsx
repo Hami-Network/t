@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { GiIsland } from 'react-icons/gi'
-// import { MdOutlineAttractions } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCategories } from '../../redux/slices/excursionSlice'
 
-function SearchHomePage({ viewCategory, setViewCategory }) {
+function SearchHomePage({ viewCategory, setViewCategory, setCategory }) {
     const dispatch = useDispatch()
 
     const [viewFilter, setViewFilter] = useState(false)
@@ -32,9 +31,11 @@ function SearchHomePage({ viewCategory, setViewCategory }) {
                     <div className={`overflow-x-auto `}>
                         <div className=' justify-between space-x-3 flex w-full  px-1'>
                             {categories?.map((item) => (
-                            <div className='space-x-2 w-full flex px-3 hover:text-lightblue lg:justify-center items-center py-4 rounded-lg lg:border lg:border-lightblue cursor-pointer'>
+                            <div className='space-x-2 w-full flex px-3 hover:text-lightblue lg:justify-center items-center py-4 rounded-lg lg:border lg:border-lightblue cursor-pointer'
+                            onClick={() => setCategory(item._id)}
+                            >
                                 <span className='text-lightblue'> <GiIsland /></span>
-                                <span className=''>{item.categoryName}</span>
+                                <span className='whitespace-nowrap'>{item.categoryName}</span>
                             </div>
                             ))}
                         </div>

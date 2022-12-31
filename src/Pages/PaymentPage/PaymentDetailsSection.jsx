@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { AiOutlineDown } from 'react-icons/ai'
-import { PaymentInputsWrapper, usePaymentInputs } from 'react-payment-inputs';
-import images from 'react-payment-inputs/images';
+import PaypalComponent from '../../components/Payment/PaypalComponent'
+// import { PaymentInputsWrapper, usePaymentInputs } from 'react-payment-inputs';
+// import images from 'react-payment-inputs/images';
 
 function PaymentDetailsSection() {
 
-    const [ travellerData, setTravellerData ] = useState({
+    const [checkout, setCheckout] = useState(true)
+    const [travellerData, setTravellerData] = useState({
         gender: "",
         firstname: "",
         lastname: "",
@@ -13,12 +15,12 @@ function PaymentDetailsSection() {
         country: "",
         phone: "",
         special_request_text: ""
-    }) 
+    })
     const [viewRedeem, setViewRedeem] = useState(false)
-    const { wrapperProps, getCardImageProps, getCardNumberProps, getExpiryDateProps, getCVCProps } = usePaymentInputs();
+    // const { wrapperProps, getCardImageProps, getCardNumberProps, getExpiryDateProps, getCVCProps } = usePaymentInputs();
 
     const onChange = (e) => {
-        setTravellerData({...travellerData, [e.target.name]: e.target.value })
+        setTravellerData({ ...travellerData, [e.target.name]: e.target.value })
     }
 
     return (
@@ -33,12 +35,12 @@ function PaymentDetailsSection() {
                             <label className=''>Mr/Mrs</label>
                         </div>
                         <div className=''>
-                            <select 
-                            type='text'
-                            name='gender'
-                            value={travellerData.gender}
-                            onChange={onChange}
-                             className='border w-full py-2 rounded-lg px-2 text-darktext placeholder:text-darktext focus:outline-none focus:border-none focus:ring-1 focus:ring-blue bg-light' >
+                            <select
+                                type='text'
+                                name='gender'
+                                value={travellerData.gender}
+                                onChange={onChange}
+                                className='border w-full py-2 rounded-lg px-2 text-darktext placeholder:text-darktext focus:outline-none focus:border-none focus:ring-1 focus:ring-blue bg-light' >
                                 <option value={"male"}>Mr.</option>
                                 <option value={"female"}>Mrs.</option>
                                 <option value={"other"}>Ms.</option>
@@ -50,12 +52,12 @@ function PaymentDetailsSection() {
                             <label className=''>First Name</label>
                         </div>
                         <div className=''>
-                            <input 
-                            type='text' 
-                            className='border w-full py-2 rounded-lg px-2 text-darktext placeholder:text-darktext focus:outline-none focus:border-none focus:ring-1 focus:ring-blue bg-light'
-                            name='firstname'
-                            value={travellerData.firstname}
-                            onChange={onChange}
+                            <input
+                                type='text'
+                                className='border w-full py-2 rounded-lg px-2 text-darktext placeholder:text-darktext focus:outline-none focus:border-none focus:ring-1 focus:ring-blue bg-light'
+                                name='firstname'
+                                value={travellerData.firstname}
+                                onChange={onChange}
                             />
                         </div>
                     </div>
@@ -64,12 +66,12 @@ function PaymentDetailsSection() {
                             <label className=''>Last Name</label>
                         </div>
                         <div className=''>
-                            <input 
-                            type='text' 
-                            className='border w-full py-2 rounded-lg px-2 text-darktext placeholder:text-darktext focus:outline-none focus:border-none focus:ring-1 focus:ring-blue bg-light'
-                            name='lastname'
-                            value={travellerData.lastname}
-                            onChange={onChange}
+                            <input
+                                type='text'
+                                className='border w-full py-2 rounded-lg px-2 text-darktext placeholder:text-darktext focus:outline-none focus:border-none focus:ring-1 focus:ring-blue bg-light'
+                                name='lastname'
+                                value={travellerData.lastname}
+                                onChange={onChange}
                             />
                         </div>
                     </div>
@@ -80,12 +82,12 @@ function PaymentDetailsSection() {
                             <label className=''>Email</label>
                         </div>
                         <div className=''>
-                            <input 
-                            type='text' 
-                            className='border w-full py-2 rounded-lg px-2 text-darktext placeholder:text-darktext focus:outline-none focus:border-none focus:ring-1 focus:ring-blue bg-light'
-                            name='lastname'
-                            value={travellerData.lastname}
-                            onChange={onChange}
+                            <input
+                                type='text'
+                                className='border w-full py-2 rounded-lg px-2 text-darktext placeholder:text-darktext focus:outline-none focus:border-none focus:ring-1 focus:ring-blue bg-light'
+                                name='lastname'
+                                value={travellerData.lastname}
+                                onChange={onChange}
                             />
                         </div>
                     </div>
@@ -154,31 +156,7 @@ function PaymentDetailsSection() {
                     <h2 className='text-xl font-medium'>Choose Payment Method</h2>
                 </div>
 
-
-                <div className=''>
-                    <button className='px-5 py-2 text-light bg-lightblue rounded-md '>Debit/Credit</button>
-                </div>
-                <div className=''>
-                    <div className='mb-3'>
-                        <label htmlFor="in">Cardholder Name </label>
-                    </div>
-                    <div className=''>
-                        <input id='in' type="text" className='md:w-5/12 w-11/12 border border-text  py-2 rounded-md px-2 text-darktext placeholder:text-darktext focus:outline-none focus:border-none focus:ring-1 focus:ring-blue bg-light ' />
-                    </div>
-                </div>
-                <div className=''>
-                    Card Details
-                </div>
-                <div className='w-full'>
-                    <PaymentInputsWrapper {...wrapperProps}>
-                        <svg {...getCardImageProps({ images })} />
-                        <input {...getCardNumberProps()} />
-                        <input {...getExpiryDateProps()} />
-                        <input {...getCVCProps()} />
-                        {/* {meta.isTouched && meta.error && <span>Error: {meta.error}</span>} */}
-                    </PaymentInputsWrapper>
-                </div>
-
+                <PaypalComponent />
 
             </div>
             <div className='bg-light my-5 p-7 rounded-2xl lg:flex '>

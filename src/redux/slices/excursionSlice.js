@@ -5,11 +5,12 @@ const initialState = {
   loading: false,
   excursion: {},
   reviews: [],
-  categories: []
+  categories: [],
+  excursions: []
 };
 
-export const getExcursions = createAsyncThunk(
-  "excursion/getExcursions",
+export const getAllExcursions = createAsyncThunk(
+  "excursion/getAllExcursions",
   async (args, { getState }) => {
     // const { token } = getState().user
     // const config = {
@@ -17,7 +18,21 @@ export const getExcursions = createAsyncThunk(
     //     "Content-Type": "application/json",
     //   },
     // };
-    const response = await axios.get("/attractions/single/63ac0a9e23d63a74a8cad48b");
+    const response = await axios.get(`/attractions/all?destination=${args.destination}&category=${args.category}`);
+    return response.data;
+  }
+);
+export const getExcursion = createAsyncThunk(
+  "excursion/getExcursion",
+  async (args, { getState }) => {
+    // const { token } = getState().user
+    // const config = {
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // };
+    console.log(args);
+    const response = await axios.get(`/attractions/single/${args}`);
     return response.data;
   }
 );
@@ -31,7 +46,7 @@ export const getReviews = createAsyncThunk(
     //     "Content-Type": "application/json",
     //   },
     // };
-    const response = await axios.get("/attractions/reviews/single/63ac0a9e23d63a74a8cad48b");
+    const response = await axios.get(`/attractions/reviews/single/${args}`);
     return response.data;
   }
 );
@@ -48,10 +63,10 @@ const excursionSlice = createSlice({
   name: "excursion",
   initialState,
   extraReducers: {
-    [getExcursions.pending]: (state, action) => {
+    [getExcursion.pending]: (state, action) => {
       state.loading = true;
     },
-    [getExcursions.fulfilled]: (state, action) => {
+    [getExcursion.fulfilled]: (state, action) => {
       state.loading = false;
       state.excursion = action.payload;
     },
@@ -68,6 +83,13 @@ const excursionSlice = createSlice({
     [getCategories.fulfilled]: (state, action) => {
       state.loading = false;
       state.categories = action.payload;
+    },
+    [getAllExcursions.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [getAllExcursions.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.excursions = action.payload;
     },
   },
 });

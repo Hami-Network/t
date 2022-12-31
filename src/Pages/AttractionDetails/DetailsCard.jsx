@@ -31,7 +31,7 @@ function DetailsCard() {
 
     useEffect(() => {
         if (excursion?.activities) {
-            const { childPrice } = excursion?.activities[0]
+            const { childPrice } = excursion?.activities[0] ? excursion?.activities[0] : 0
             let sum = (Number(offerAmount) * Number(data.adult)) + (Number(childPrice) * Number(data.child))
             setPrice(sum)
         }
@@ -97,7 +97,7 @@ function DetailsCard() {
                             <p className='text-xs text-darktext font-extralight'>per person</p>
                         </span>
                         {excursion?.isOffer && (
-                            <span className='bg-soft px-3 py-2 rounded-full text-blue'>{excursion?.offerAmount} {excursion?.offerAmountType === "flat" ? "AED" : "%"} OFF</span>
+                            <span className='bg-soft px-3 py-2 rounded-full text-blue'>{excursion?.offerAmount && excursion?.offerAmount} {excursion?.offerAmountType && excursion?.offerAmountType === "flat" ? "AED" : "%"} OFF</span>
                         )}
                     </div>
                     {/* <div className=''>

@@ -1,15 +1,18 @@
-import React from 'react'
-import { AiFillStar, AiOutlineClose, AiOutlineMail } from 'react-icons/ai'
-import { TfiHeadphoneAlt } from 'react-icons/tfi'
-import { BsWhatsapp } from 'react-icons/bs'
+import React, { useState } from 'react'
+import { AiFillStar, AiOutlineClose } from 'react-icons/ai'
 import { NeedHelp } from '../../components/Layouts'
+import RangeSlider from "react-range-slider-input";
+import "react-range-slider-input/dist/style.css";
 
 function SearchFunctionalitySection({ viewCategory, setViewCategory }) {
+    const [ price, setPrice ] = useState([])
+
+console.log(price);
     return (
         <>
             <div className={`lightglass ${viewCategory ? "fixed" : "hidden"} top-0 bottom-0 right-0 left-0 z-10`} onClick={() => setViewCategory(!viewCategory)}></div>
             <div className={`bg-light  p-5 lg:p-0 rounded-t-3xl overflow-y-auto lg:rounded-none lg:bg-light lg:h-auto lg:w-auto h-[85vh] w-full fixed lg:static ${viewCategory ? "bottom-0" : "-bottom-full"} z-10 transition-all duration-500`}>
-            <div className='flex lg:hidden justify-between text-darktext p-3'>
+                <div className='flex lg:hidden justify-between text-darktext p-3'>
                     <span className='text-xl font-semibold'>Category</span>
                     <span className='text-3xl' onClick={() => setViewCategory(!viewCategory)}><AiOutlineClose /></span>
                 </div>
@@ -24,39 +27,20 @@ function SearchFunctionalitySection({ viewCategory, setViewCategory }) {
                                     <input type='date' className='text-text py-2 w-full border border-sky-500 rounded-lg px-2 focus:border-none focus:ring-1 focus:ring-sky-500 outline-none' />
                                 </div>
                             </div>
-                            {/* <div className='2 space-y-3'>
-                                <div className='text-text font-medium'>
-                                    <p className=''>Popular Tags</p>
-                                </div>
-                                <div className='space-y-3'>
-                                    <div className='flex space-x-3'>
-                                        <input type='checkbox' className='w-5' />
-                                        <p className='text-sm text-darktext'>Child Friendly</p>
-                                    </div>
-                                    <div className='flex space-x-3'>
-                                        <input type='checkbox' className='w-5' />
-                                        <p className='text-sm text-darktext'>Taking extra precuations</p>
-                                    </div>
-                                    <div className='flex space-x-3'>
-                                        <input type='checkbox' className='w-5' />
-                                        <p className='text-sm text-darktext'>Away from the chaos</p>
-                                    </div>
-                                    <div className='flex space-x-3'>
-                                        <input type='checkbox' className='w-5' />
-                                        <p className='text-sm text-darktext'>Epic challenges</p>
-                                    </div>
-                                    <div className='flex space-x-3'>
-                                        <input type='checkbox' className='w-5' />
-                                        <p className='text-sm text-darktext'>Virtual experiences</p>
-                                    </div>
-                                </div>
-                            </div> */}
+
                             <div className='3 space-y-3'>
                                 <div className='text-text font-medium'>
                                     <p className=''>Price Range</p>
                                 </div>
                                 <div className='flex items-center space-x-4'>
-                                    <input type='range' min={'0'} max={'100'} className='w-full' />
+                                    {/* <input type='range' min={'0'} max={'100'} className='w-full' /> */}
+                                    <RangeSlider
+                                    min={5}
+                                    max={100}
+                                    value={price}
+                                    defaultValue={[0,50]}
+                                    />
+
                                 </div>
                                 <div className='flex items-center space-x-4 justify-center'>
                                     <input type='number' className='border border-sky-500 w-20 py-2 px-2 text-text rounded-lg focus:border-none focus:ring-1 focus:ring-sky-500 outline-none' />
@@ -148,33 +132,7 @@ function SearchFunctionalitySection({ viewCategory, setViewCategory }) {
                                     </div>
                                 </div>
                             </div>
-                            <div className='6 space-y-3'>
-                                <div className='text-text font-medium'>
-                                    <p className=''>Age Group</p>
-                                </div>
-                                <div className='space-y-3'>
-                                    <div className='flex space-x-3'>
-                                        <input type='checkbox' className='w-5' />
-                                        <p className='text-sm text-darktext'>1 & Up</p>
-                                    </div>
-                                    <div className='flex space-x-3'>
-                                        <input type='checkbox' className='w-5' />
-                                        <p className='text-sm text-darktext'>3 & Up</p>
-                                    </div>
-                                    <div className='flex space-x-3'>
-                                        <input type='checkbox' className='w-5' />
-                                        <p className='text-sm text-darktext'>7 & Up</p>
-                                    </div>
-                                    <div className='flex space-x-3'>
-                                        <input type='checkbox' className='w-5' />
-                                        <p className='text-sm text-darktext'>13 & Up</p>
-                                    </div>
-                                    <div className='flex space-x-3'>
-                                        <input type='checkbox' className='w-5' />
-                                        <p className='text-sm text-darktext'>18 & Up</p>
-                                    </div>
-                                </div>
-                            </div>
+
 
                         </div>
                     </div>

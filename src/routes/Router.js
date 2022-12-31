@@ -22,13 +22,13 @@ const ThemeRoutes = [
         children: [
             { path: "", element: <AttractionHomePage /> },
             { path: "/attraction", element: <AttractionLandingPage /> },
-            { path: "/details", element: <AttractionDetailsPage /> },
+            { path: "/details/:id", element: <AttractionDetailsPage /> },
             { path: "/combo", element: <ComboLandingPage /> },
             { path: "/specialoffer", element: <SpecialOfferLandingPage /> },
             { path: "/visa", element: <VisaLandingPage /> },
             { path: "/blog", element: <BlogLandingPage /> },
             { path: "/blog/details", element: <BlogDetailsPage /> },
-            { path: "/search", element: <SearchingResultPage /> },
+            { path: "/search/:slug", element: <SearchingResultPage /> },
             { path: "/payment/:id", element: <PaymentPage /> },
         ]
     },

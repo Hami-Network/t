@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react'
 // import { AiFillStar } from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import Rating from '../../components/Rating/Rating'
 import { getReviews } from '../../redux/slices/excursionSlice'
 
 function ReviewSection() {
   const dispatch = useDispatch()
+  const { id } = useParams()
 
   const { reviews } = useSelector(state => state.excursion)
 
   useEffect(() => {
-    dispatch(getReviews())
+    dispatch(getReviews(id))
   }, [dispatch])
 
 

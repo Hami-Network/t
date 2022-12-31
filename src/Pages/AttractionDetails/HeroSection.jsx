@@ -16,15 +16,17 @@ import DetailsCard from './DetailsCard'
 import FeatureSection from './FeatureSection'
 // import TourOverview from './TourOverview'
 import { useDispatch, useSelector } from 'react-redux'
-import { getExcursions } from '../../redux/slices/excursionSlice'
+import { getExcursion } from '../../redux/slices/excursionSlice'
+import { useParams } from 'react-router-dom'
 
 function HeroSection() {
     const dispatch = useDispatch()
+    const { id } = useParams()
 
     const { excursion } = useSelector(state => state.excursion)
 
     useEffect(() => {
-        dispatch(getExcursions())
+        dispatch(getExcursion(id))
     }, [dispatch])
     // const [viewBook, setViewBook] = useState(false)
     const [viewBookCard, setViewBookCard] = useState(false)

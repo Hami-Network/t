@@ -21,11 +21,11 @@ function TopSellingSection() {
       </div>
       <div className='containertop scroll-smooth flex overflow-x-auto snap-x overflow-y-hidden  gap-5'>
         {topAttractions?.map((item) => (
-          <Link to='/attraction' key={item._id}>
+          <Link to={`/details/${item?._id}`} key={item?._id}>
             <div className=' snap-start mt-2 bg-light p-3 rounded-3xl cursor-pointer' >
               <div className=' relative w-[17.5em]'>
                 <div className='overflow-hidden rounded-t-3xl rounded-b-md'>
-                  <img className='hover:scale-110 object-cover  h-[14em] w-full transition-all duration-500 cursor-pointer' src={"http://127.0.0.1:5000" + item.images[0]} alt={item.title} />
+                  <img className='hover:scale-110 object-cover  h-[14em] w-full transition-all duration-500 cursor-pointer' src={"http://127.0.0.1:5000" + item?.images[0]} alt={item?.title} />
                 </div>
                 <div className='px-3 pt-5 flex justify-between '>
                   <div className='text-light bg-lightblue text-xs px-2 rounded-lg flex items-center'>
@@ -39,8 +39,8 @@ function TopSellingSection() {
                 <div className='px-3 space-y-2 pb-5 pt-3 text-darktext'>
                   <div className='font-semibold'>{item.title} </div>
                   <div className='flex justify-between '>
-                    <span className='text-sm'>{item.category.categoryName}</span>
-                    <span className='text-base font-medium text-blue '>AED {item.activity?.adultPrice}</span>
+                    <span className='text-sm'>{item?.category?.categoryName}</span>
+                    <span className='text-base font-medium text-blue '>AED {item?.activity?.adultPrice}</span>
                   </div>
                 </div>
               </div>

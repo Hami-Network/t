@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { BsCalendar2Date, BsEmojiHeartEyes } from 'react-icons/bs'
 import { IoLocationOutline } from 'react-icons/io5'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 
@@ -13,8 +14,9 @@ function AttractionCard() {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        if (value === "Dubai") {
-            navigate("/attraction")
+        console.log(value);
+        if (value !== "") {
+            navigate(`/search/${value}`)
         } else {
             console.log("result not found");
         }
@@ -23,46 +25,19 @@ function AttractionCard() {
     const handleFocus = (e) => {
         setDatalist(true)
     }
-    // const handleBlur = () => {
-    //     setDatalist(false)
-    // }
 
-    const country = [
-        {
-            name: "united arab emirates"
-        },
-        {
-            name: "India"
-        },
-        {
-            name: "Zimbave"
-        },
-        {
-            name: "Urugay"
-        },
-        {
-            name: "Jamaica"
-        },
-        {
-            name: "Netherland"
-        },
-        {
-            name: "Brazil"
-        },
-        {
-            name: "Argentina"
-        },
-    ]
+    const { initialData } = useSelector(state => state.home) 
+    console.log(initialData?.destinations);
 
 
 
     useEffect(() => {
-        const list = country.filter((data) => {
+        const list = initialData?.destinations?.filter((data) => {
             return data.name?.toLowerCase().startsWith(value)
         })
 
         setFilteredData(list)
-    }, [value])
+    }, [value, initialData])
 
     return (
         <>
