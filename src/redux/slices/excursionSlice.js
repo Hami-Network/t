@@ -6,8 +6,23 @@ const initialState = {
   excursion: {},
   reviews: [],
   categories: [],
-  excursions: []
+  excursions: [],
+  excursionAll: []
 };
+
+export const excursionall = createAsyncThunk(
+  "excursion/excursionall",
+  async (args, { getState }) => {
+    // const { token } = getState().user
+    // const config = {
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // };
+    const response = await axios.get(`/attractions/all?limit=20`);
+    return response.data;
+  }
+);
 
 export const getAllExcursions = createAsyncThunk(
   "excursion/getAllExcursions",
@@ -18,7 +33,7 @@ export const getAllExcursions = createAsyncThunk(
     //     "Content-Type": "application/json",
     //   },
     // };
-    const response = await axios.get(`/attractions/all?destination=${args.destination}&category=${args.category}`);
+    const response = await axios.get(`/attractions/all?limit=100&destination=${args.destination}&category=${args.category}`);
     return response.data;
   }
 );
@@ -90,6 +105,13 @@ const excursionSlice = createSlice({
     [getAllExcursions.fulfilled]: (state, action) => {
       state.loading = false;
       state.excursions = action.payload;
+    },
+    [excursionall.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [excursionall.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.excursionAll = action.payload;
     },
   },
 });

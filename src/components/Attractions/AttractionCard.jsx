@@ -64,7 +64,7 @@ function AttractionCard() {
                                     <div className='absolute max-h-[17em] w-[21em] mt-1  bg-light rounded-lg overflow-y-auto'>
                                         <div className='w-full p-2 overflow-y-auto'>
                                             {filteredData?.map((item) => (
-                                                <div key={item.name} className='bg-soft py-2 px-2 cursor-pointer  z-30' onClick={() => {
+                                                <div key={item.name} className='bg-soft py-2 px-2 cursor-pointer capitalize  z-30' onClick={() => {
                                                     setValue(item.name)
                                                     setDatalist(!datalist)
                                                 }

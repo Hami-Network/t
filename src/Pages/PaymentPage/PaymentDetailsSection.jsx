@@ -156,7 +156,7 @@ function PaymentDetailsSection() {
                     <h2 className='text-xl font-medium'>Choose Payment Method</h2>
                 </div>
 
-                <PaypalComponent />
+                {/* <PaypalComponent /> */}
 
             </div>
             <div className='bg-light my-5 p-7 rounded-2xl lg:flex '>

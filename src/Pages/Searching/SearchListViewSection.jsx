@@ -3,9 +3,10 @@ import React from 'react'
 import { AiFillStar, AiOutlineClockCircle, AiOutlineHeart } from 'react-icons/ai'
 import { TiTick } from 'react-icons/ti'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function SearchListViewSection() {
+    const navigate = useNavigate()
 
     const { excursions } = useSelector(state => state.excursion)
 
@@ -14,9 +15,7 @@ function SearchListViewSection() {
             {excursions[0] ? (
                 <div className='md:grid md:grid-cols-2 gap-5'>
                     {excursions[0] && excursions?.map((item) => (
-                        <div className='' key={item?._id}>
-                            <Link to={`/details/${item?._id}`}>
-                                <div className=' snap-start mt-2 bg-light shadow-md p-3 rounded-3xl cursor-pointer mx-2 md:mx-0'>
+                                <div className='h-full snap-start mt-2 bg-light shadow-md p-3 rounded-3xl cursor-pointer mx-2 md:mx-0' onClick={() => navigate(`/details/${item?._id}`)}>
                                     <div className=' relative space-y-3'>
                                         <div className='overflow-hidden rounded-2xl '>
                                             <img className='hover:scale-110 object-cover  h-[14em] w-full transition-all duration-500 cursor-pointer' src={"http://localhost:5000" + item?.images[0]} alt={item?.title} />
@@ -63,8 +62,6 @@ function SearchListViewSection() {
                                         </div>
                                     </div>
                                 </div>
-                            </Link>
-                        </div>
                     ))}
                 </div>
             ) : (

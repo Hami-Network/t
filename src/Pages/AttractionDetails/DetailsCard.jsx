@@ -3,12 +3,14 @@ import { AiFillCar } from 'react-icons/ai'
 import { BsCalendar2Day } from 'react-icons/bs'
 import { FaChild } from 'react-icons/fa'
 import { IoIosMan } from 'react-icons/io'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import axios from '../../axios'
 import { useNavigate } from 'react-router-dom'
+import { orderPayload } from '../../redux/slices/paymentSlice'
 
 function DetailsCard() {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const { excursion } = useSelector(state => state.excursion)
 
@@ -70,8 +72,27 @@ function DetailsCard() {
                 }
             ]
         }
+        const order = {
+            attraction: excursion?._id,
+            attractionName: excursion?.title,
+            isOffer: excursion?.isOffer,
+            offerAmount: excursion?.offerAmount,
+            offerAmountType: excursion?.offerAmountType,
+            price: price,
+            selectedActivities: {
+                adultsCount: data.adult,
+                childrenCount: data.child,
+                infantCount: 0,
+                transferType: activity.transfer,
+                activity: excursion?.activities && (excursion?.activities[0]),
+                activityName: excursion?.activities && (excursion?.activities[0]?.name),
+                date: activity.date,
+            }
+
+        }
         try {
             const response = await axios.post('attractions/orders/initiate', payload)
+            dispatch(orderPayload(order))
             navigate(`/payment/${response.data._id}`)
 
         } catch (err) {

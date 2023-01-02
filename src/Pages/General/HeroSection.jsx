@@ -4,14 +4,12 @@ import { MdAttractions } from 'react-icons/md'
 import { GiCommercialAirplane } from 'react-icons/gi'
 import { IoIosCar } from 'react-icons/io'
 import { FaHotel, FaWpforms } from 'react-icons/fa'
-import banner1 from "../../static/images/banner1.jpg"
-import banner2 from "../../static/images/banner2.jpg"
-import banner3 from "../../static/images/banner3.jpg"
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import { AttractionCard, FlightCard, HotelCard, CarCard, VisaCard } from '../../components/Attractions'
 import { IoLocationOutline } from 'react-icons/io5'
 import { useDispatch, useSelector } from 'react-redux'
+import { excursionall } from '../../redux/slices/excursionSlice'
 
 function HeroSection() {
 
@@ -39,21 +37,9 @@ function HeroSection() {
             setCurrentSlide(index)
         }
     }
-
-    const data= [
-        {
-            id: 1,
-            img: banner1
-        },
-        {
-            id: 2,
-            img: banner2
-        },
-        {
-            id: 3,
-            img: banner3
-        },
-    ]
+    useEffect(() => {
+        dispatch(excursionall())
+    },[dispatch])
 
     return (
         <div>
