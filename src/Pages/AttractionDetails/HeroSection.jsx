@@ -44,7 +44,7 @@ function HeroSection() {
                                         <div className='text-3xl font-bold '>
                                             {excursion?.title}
                                         </div>
-                                        <div className='flex items-center space-x-3 text-sm'>
+                                        {/* <div className='flex items-center space-x-3 text-sm'>
                                             <span className=' text-yellow-500 flex space-x-1 '>
                                                 <AiFillStar />
                                                 <AiFillStar />
@@ -54,7 +54,7 @@ function HeroSection() {
                                             </span>
                                             <span className='text-text'>(1935 Reviews)</span>
                                             <span className='flex items-center text-blue'><CiLocationOn /> {excursion?.destination?.name} </span>
-                                        </div>
+                                        </div> */}
 
                                         <div className='text-sm flex items-center space-x-1 text-green-600'>
                                             <span className=''><SlCalender /> </span>
@@ -85,7 +85,7 @@ function HeroSection() {
                             </div>
                             <div className='md:my-5'>
                                 <>
-                                    <div className=' bg-lightblue py-5 md:rounded-md sticky top-0  gap-3 z-10'>
+                                    {/* <div className=' bg-lightblue py-5 md:rounded-md sticky top-0  gap-3 z-10'>
                                         <div className='overflow-x-auto'>
                                             <div className='flex space-x-1 items-center px-1 lg:px-5'>
                                                 <button className='border border-lightblue rounded-lg hover:bg-lightblue hover:text-light hover:border-light text-blue w-full py-3 text-center focus:ring-light focus:bg-lightblue focus:text-light focus:ring-1 focus:outline-none px-3 lg:px-5  focus:border-none bg-light'>
@@ -117,7 +117,7 @@ function HeroSection() {
                                     </div>
                                     <div id='mapSection' className='p-5 my-5 bg-light rounded-2xl'>
                                         <MapSection />
-                                    </div>
+                                    </div> */}
 
 
                                     {excursion?.sections?.map((item) => (
@@ -142,9 +142,9 @@ function HeroSection() {
                                     <div id='policySection' className='py-5'>
                                         <PolicySection />
                                     </div> */}
-                                    <div id='faqSection' className='py-5'>
+                                    {/* <div id='faqSection' className='py-5'>
                                         <FaqSection />
-                                    </div>
+                                    </div> */}
                                 </>
                             </div>
                         </div>
